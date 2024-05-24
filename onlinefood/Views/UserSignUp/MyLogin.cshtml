@@ -1,0 +1,36 @@
+﻿
+@model onlinefood.Models.UserSignup
+@{
+    ViewBag.Title = "Login page";
+
+}
+<link href="~/Content/Mylogin.css" rel="stylesheet" />
+<script src="~/Scripts/Mylogin.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+<div class="main">
+    <div class="register">
+        <h2>Login</h2>
+        <form id="register" method="post" onclick="return checkvalidation()">
+            <!--<i class="fas fa-paper-plane"></i>-->
+            <div>
+                <label>Username:</label>
+                <input type="text" name="Username" id="fname" placeholder="Enter Username" onfocusout="checkfname()" style="max-inline-size:300px" autofocus required><br /><br />
+                <small></small>
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type="Password" name="Password" id="password" placeholder="Enter password" onfocusout="checkpassword()" style="max-inline-size:300px" autofocus required>
+                <small></small><br /><br />
+            </div>
+            <div align-content:center>
+                <input style="width:33.3%" type="submit" id="submit" value="LOGIN" name="submit" />
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+

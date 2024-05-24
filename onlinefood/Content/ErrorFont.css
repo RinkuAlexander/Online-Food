@@ -1,0 +1,20 @@
+﻿.smallhidden{
+    visibility:hidden;
+}
+.smallshow {
+    visibility: visible;
+    color: blue; 
+       
+}
+small{
+    color:red;
+    
+}
+.formmargin {
+    padding: 10px;
+    margin: 30px;
+    visibility: hidden;
+}
+label {
+   
+}

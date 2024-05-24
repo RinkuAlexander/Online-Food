@@ -1,0 +1,98 @@
+﻿@model IEnumerable<onlinefood.Models.CateModel>
+
+@{
+    ViewBag.Title = "ShowCategories";
+}
+
+<h2>Show Categories</h2>
+<script type="text/javascript">
+    function preventBack() {
+        window.history.forward();
+    }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () {
+        null;
+    }
+</script>
+<head>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="background-color:grey">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("User list", "ShowUserDetails", "UserSignUp")</li>
+                    <li>@Html.ActionLink("Add category", "UploadFile", "Admin")</li>
+                    <li>@Html.ActionLink("Add products", "AddProductDetails", "Admin")</li>
+                    <li>@Html.ActionLink("View products", "ShowProductsDetails", "Admin")</li>
+                    <li>@Html.ActionLink("Logout", "MyLogin", "UserSignUp")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content"></div>
+        @*@RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </footer>
+            </div>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)*@
+
+
+</body>
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>*@
+            <td>
+                <img src="@item.Image.Replace("~","")" style="width:100px;height:100px;" />
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+                @Html.ActionLink("Delete", "DeleteCategories", new { Id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

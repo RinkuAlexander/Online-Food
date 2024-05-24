@@ -1,0 +1,123 @@
+﻿@model IEnumerable<onlinefood.Models.ProductModel>
+
+@{
+    ViewBag.Title = "ShowProductsDetails";
+}
+
+<h2>ShowProductsDetails</h2>
+<head>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Login", "MyLogin", "UserSignUp")</li>
+                    <li>@Html.ActionLink("SignUp", "AddUserDetails", "UserSignUp")</li>
+                    <li>@Html.ActionLink("User list", "ShowUserDetails", "UserSignUp")</li>
+                    <li>@Html.ActionLink("Add category", "UploadFile", "Admin")</li>
+                    <li>@Html.ActionLink("Add products", "AddProductDetails", "Admin")</li>
+                    <li>@Html.ActionLink("View category", "ShowCategories", "Admin")</li>
+                    <li>@Html.ActionLink("View products", "ShowProductsDetails", "Admin")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content"></div>
+        @*@RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </footer>
+            </div>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)*@
+
+
+</body>
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>*@
+            <td>
+                <img src="@item.Image.Replace("~","")" style="width:100px;height:100px;" />
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "UpdateProduct", new { ProductId = item.ProductId }) |*@
+                @Html.ActionLink("Details", "Details", new {  id=item.ProductId }) |
+                @*@Html.ActionLink("Delete", "DeleteProducts", new { ProductId = item.ProductId })*@
+            </td>
+        </tr>
+    }
+
+</table>
